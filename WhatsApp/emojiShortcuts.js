@@ -24,8 +24,6 @@ var Handler = {
         this.initialized = true;
     },
     highlightSelected: function () {
-        console.log('Target Index: ', this.targetIndex);
-        console.log('Coords: ' + this.coords.x + ' , ' + this.coords.y);
         var par = document.querySelector('#main > footer > span > div > span > div > div');
 
         var oldTarget = par.childNodes[this.lastIndex];
