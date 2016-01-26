@@ -1,9 +1,5 @@
 var Handler = {
-    attach: function (document) {
-        console.log('Handler attached!');
-        // Open emoji panel
-        document.querySelector('#main > footer > div > button').click();
-
+    init: function (document) {
         this.coords = {
             x: 0,
             y: 0
@@ -23,6 +19,13 @@ var Handler = {
 
         this.initialized = true;
     },
+    attach: function (document) {
+        console.log('Handler attached!');
+        // Open emoji panel
+        document.querySelector('#main > footer > div > button').click();
+
+        this.init()
+    },
     highlightSelected: function () {
         var par = document.querySelector('#main > footer > span > div > span > div > div');
 
@@ -34,6 +37,20 @@ var Handler = {
         target.style.border = borderCss;
 
         this.lastIndex = this.targetIndex;
+    },
+    cyclePanelSection: function (delta) {
+        var selectedSection = document.querySelector('#main > footer > span > div > div > div');
+        var transformStyle = selectedSection.style.transform.match(/(\d)00/);
+        var idx = parseInt(transformStyle ? transformStyle[1] : 0) + delta;
+        var buttons = document.querySelectorAll('#main > footer > span > div > div > button');
+        if (idx >= buttons.length) {
+            idx = buttons.length - 1
+        }
+        else if (idx < 0) {
+            idx = 0;
+        }
+        var target = buttons[idx];
+        target.click()
     },
     detach: function (doc) {
         // Close emoji panel
@@ -71,6 +88,12 @@ var Handler = {
             else if (e.keyCode === 37) {
                 e.preventDefault();
                 // Left
+                if (e.ctrlKey) {
+                    this.cyclePanelSection(-1);
+                    this.init(doc);
+                    return false;
+                }
+
                 if (this.coords.x === 0) {
                     this.coords.x = this.bounds.x;
                     // Track index in list as the real coordinates (after taking into account scroll)
@@ -84,7 +107,12 @@ var Handler = {
             else if (e.keyCode === 39) {
                 e.preventDefault();
                 // Right
-                //TODO ctrl key to switch emoji tabs
+                if (e.ctrlKey) {
+                    this.cyclePanelSection(1);
+                    this.init(doc);
+                    return false;
+                }
+
                 if (this.coords.x === this.bounds.x) {
                     this.coords.x = 0;
                     this.targetIndex -= this.bounds.x
