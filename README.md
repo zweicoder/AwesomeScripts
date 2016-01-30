@@ -1,6 +1,5 @@
 # Awesome Scripts
-A collection of *AWESOME* scripts that can be injected to make Web Apps more awesome, via Greasemonkey, Chrome Extensions, or Nativefier.
+A collection of *AWESOME* scripts that can be injected to make Web Apps more awesome, via Greasemonkey, TamperMonkey, Chrome Extensions, or Nativefier.
+TODO LINKS
 
-### WhatsApp
-- Emoji shortcuts: Select emojis with your keyboard instead of swapping to your mouse every time!
-- Tab For WhatsApp: Use (Shift) Tab to cycle through your conversations!
+**Got your own awesome script? Send in a pull request!**
