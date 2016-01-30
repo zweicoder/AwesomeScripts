@@ -1,6 +1,12 @@
 # WhatsApp
-- Emoji shortcuts: Ctrl + :arrow_up: to open the panel, :arrow_up::arrow_down::arrow_left::arrow_right: and enter to select Emojis. Ctrl + :arrow_up::arrow_down::arrow_left::arrow_right: to switch Emoji tab. 
-- Tab For WhatsApp: Use (Shift) Tab to cycle through your conversations!
+
+### Emoji Keyboard Shortcuts 
+- Ctrl + :arrow_up: to open the panel
+- :arrow_up::arrow_down::arrow_left::arrow_right: and enter to select Emojis
+- Ctrl + :arrow_up::arrow_down::arrow_left::arrow_right: to switch Emoji tab. 
+
+### Tab For WhatsApp
+- Use (Shift) Tab to cycle through your conversations!
 
 ## Installation Options
 - Native app in the [release](), powered by [Nativefier](https://github.com/jiahaog/nativefier)
