@@ -1,5 +1,5 @@
 var Handler = {
-    init: function (document) {
+    init: function(document){
         this.coords = {
             x: 0,
             y: 0
@@ -24,7 +24,7 @@ var Handler = {
         // Open emoji panel
         document.querySelector('#main > footer > div > button').click();
 
-        this.init()
+        this.init(document)
     },
     highlightSelected: function () {
         var par = document.querySelector('#main > footer > span > div > span > div > div');
@@ -43,10 +43,10 @@ var Handler = {
         var transformStyle = selectedSection.style.transform.match(/(\d)00/);
         var idx = parseInt(transformStyle ? transformStyle[1] : 0) + delta;
         var buttons = document.querySelectorAll('#main > footer > span > div > div > button');
-        if (idx >= buttons.length) {
-            idx = buttons.length - 1
+        if(idx >= buttons.length){
+            idx = buttons.length -1
         }
-        else if (idx < 0) {
+        else if (idx <0 ){
             idx = 0;
         }
         var target = buttons[idx];
@@ -71,13 +71,13 @@ var Handler = {
         }
 
         if (this.initialized) {
-            var par = document.querySelector('#main > footer > span > div > span > div > div');
             if (e.keyCode === 27) {
                 // On Escape
                 this.detach(doc);
                 return true;
             }
 
+            var par = document.querySelector('#main > footer > span > div > span > div > div');
             if (e.keyCode === 13) {
                 // on enter, close panel and detach
                 e.preventDefault();
