@@ -9,7 +9,7 @@
 - Use (Shift) Tab to cycle through your conversations!
 
 ## Installation Options
-- Native app in the [release](), powered by [Nativefier](https://github.com/jiahaog/nativefier)
+- Native app in [releases](https://github.com/zweicoder/AwesomeScripts/releases), powered by [Nativefier](https://github.com/jiahaog/nativefier)
 - Copy paste the script into TamperMonkey and run it with `document` passed as argument
 
 **Got your own awesome script? Send in a pull request!**
