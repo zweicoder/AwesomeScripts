@@ -66,6 +66,7 @@ var Handler = {
     },
     handle: function (doc, e) {
         if (e.keyCode === 38 && e.ctrlKey && !this.initialized) {
+        	e.preventDefault();
             this.attach(doc);
             return false;
         }
@@ -164,10 +165,14 @@ function bindKeyListener(doc, e) {
     var fn = Handler.handle.bind(Handler, doc);
     var existingListener = doc.onkeydown;
     doc.onkeydown = function (ev) {
+    	var res, res2;
         if (existingListener) {
-            existingListener(e);
+            res = existingListener(ev);
         }
-        fn(ev);
+        res2 = fn(ev);
+        // If either of the functions handled the event (it returned false), 
+        // return false. Use AND
+        return res && res2
     }
 }
 

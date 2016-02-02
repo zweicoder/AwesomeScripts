@@ -36,10 +36,15 @@ function bindKeyListener(doc, e) {
     var fn = cycleWithTab.bind(null, doc);
     var existingListener = doc.onkeydown;
     doc.onkeydown = function (ev) {
-        existingListener(ev);
-        fn(ev);
-    };
-    //doc.onkeydown = cycleWithTab.bind(null, doc);
+        var res, res2;
+        if (existingListener) {
+            res = existingListener(ev);
+        }
+        res2 = fn(ev);
+        // If either of the functions handled the event (it returned false), 
+        // return false. Use AND
+        return res && res2
+    }
 }
 
 module.exports =  bindKeyListener;
