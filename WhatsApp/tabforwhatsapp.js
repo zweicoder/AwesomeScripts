@@ -27,7 +27,13 @@ function cycleWithTab(doc, e) {
             }
         }
 
-        items[targetIdx].childNodes[0].childNodes[0].click();
+        var node = items[targetIdx].childNodes[0].childNodes[0];
+        var event = new MouseEvent('mousedown', {
+        	'view': window, 
+        	'bubbles': true, 
+        	'cancelable': false
+        });
+        node.dispatchEvent(event);
         return false;
     }
 }
@@ -36,15 +42,10 @@ function bindKeyListener(doc, e) {
     var fn = cycleWithTab.bind(null, doc);
     var existingListener = doc.onkeydown;
     doc.onkeydown = function (ev) {
-        var res, res2;
-        if (existingListener) {
-            res = existingListener(ev);
-        }
-        res2 = fn(ev);
-        // If either of the functions handled the event (it returned false), 
-        // return false. Use AND
-        return res && res2
-    }
+        existingListener(ev);
+        fn(ev);
+    };
+    //doc.onkeydown = cycleWithTab.bind(null, doc);
 }
 
 module.exports =  bindKeyListener;
